@@ -1,9 +1,9 @@
-# Git の教科書
+# Git について
 
 ## 目次
 <!-- TOC -->
 
-- [Git の教科書](#git-の教科書)
+- [Git について](#)
   - [目次](#目次)
   - [はじめに](#はじめに)
     - [Git とは](#git-とは)
@@ -30,7 +30,7 @@
       - [Git コマンド補完の有効化やカレントブランチ名表示に対応する](#git-コマンド補完の有効化やカレントブランチ名表示に対応する)
   - [Git コマンドの基本操作](#git-コマンドの基本操作)
     - [クローン](#クローン-1)
-      - [front-end-textbook リポジトリをクローンする場合](#front-end-textbook-リポジトリをクローンする場合)
+      - [リポジトリをクローンする場合](#リポジトリをクローンする場合)
     - [ブランチ](#ブランチ-1)
       - [ブランチの作成](#ブランチの作成)
         - [master ブランチを基にした my-branch を作成する場合](#master-ブランチを基にした-my-branch-を作成する場合)
@@ -66,7 +66,6 @@
 ## はじめに
 
 ここでは Git について解説します。<br>
-Fork では GitHub Enterprise（GHE）を用いて開発を行います。
 
 Git についてより詳細に知る場合は、主に下記を参照してください。
 - [Git - Reference](https://git-scm.com/docs) 
@@ -83,7 +82,7 @@ GitHub とは Git を用いたWebサービスです。ファイルの記録・�
 GitHub Enterprise とは、社内に GitHub を構築できる企業向けに特化したサービスです。<br>以降 GHE と表記します。
 
 ### GitHub Flow とは
-WI では基本的に GitHub Flow に則って開発を行います。<br>簡単にまとめると以下のとおりです。
+簡単にまとめると以下のとおりです。
 
 #### 前提
 - master ブランチは常にデプロイ可能です。（いつでも納品できる状態）
@@ -92,7 +91,7 @@ WI では基本的に GitHub Flow に則って開発を行います。<br>簡単
 1. master ブランチから新たにブランチを作成します（作業ブランチとする）。<br>ブランチ名は何の作業なのかが分かる意味のある名称にします。（例：`add_main-visual`）
 2. 空コミットをしたうえで、プルリクエストを行います。（基となったブランチと差分がない場合プルリクエストはできません）
    - 空コミットは、`$ git commit --allow-empty -m "empty commit"`で行うことができます。
-   - プルリクエストのタイトルには、作業中であれば`[WIP]`(Work In Progress)と付けます。
+   - ~~プルリクエストのタイトルには、作業中であれば`[WIP]`(Work In Progress)と付けます。
 3. 作業が完了した場合、プルリクエストのタイトルから`[WIP]`を取ります。レビューを頼む場合、レビュアーにメンバーを指定してレビューをしてもらいます。
 4. レビューで承認されたら master ブランチにマージします。
 
@@ -154,7 +153,7 @@ Homebrew についての詳しい解説は下記を参照してください。
 
 ```Git Bash
 $ git config --global user.name "Your Name"
-$ git config --global user.email "your-address@fork.co.jp"
+$ git config --global user.email "your-address@test.co.jp"
 ```
 
 3. 入力情報が正しいか確認します。
@@ -163,7 +162,7 @@ $ git config --global user.email "your-address@fork.co.jp"
 $ git config --list
 credential.helper=osxkeychain
 user.name=Your Name
-user.email=your-address@fork.co.jp
+user.email=your-address@test.co.jp
 ```
 
 4. 改行コード変換設定を変更します。<br>`autocrlf` の設定が適切でないと、コードのすべてが差分として検出され、コードレビューが困難になります。必ず適切な値を設定してください。
@@ -213,10 +212,10 @@ GHE のリポジトリへの操作ができるように、Personal access token 
 
   成功すると、リポジトリのクローンが完了し、リモートリポジトリへのプッシュなどが可能になります。
    ```Git Bash
-   $ git clone https://github.fork.co.jp/wi/prj-marianna.git
-   Cloning into 'prj-marianna'...
-   Username for 'https://github.fork.co.jp': Ken Yoshihara
-   Password for 'https://Ken Yoshihara@github.fork.co.jp': 
+   $ git clone https://github.xxx.co.jp/xxx.git
+   Cloning into 'xxx'...
+   Username for 'xxx'
+   Password for 'xxx: 
    remote: Enumerating objects: 18, done.
    remote: Counting objects: 100% (18/18), done.
    remote: Compressing objects: 100% (14/14), done.
@@ -249,9 +248,9 @@ Mac にはデフォルトで Git がインストールされていますが、`H
 
 ### クローン
 
-#### front-end-textbook リポジトリをクローンする場合
+#### リポジトリをクローンする場合
 
-1. クローンしたいリポジトリ[front-end-textbook](https://github.fork.co.jp/wi/front-end-textbook)へ移動し、「Clone or Download」をクリックします。
+1. クローンしたいリポジトリへ移動し、「Clone or Download」をクリックします。
 2. リポジトリの URL をコピーします。
 
 ![](./img/how-to-clone.png)
@@ -263,7 +262,7 @@ $ cd ~/Sites/
 
 4. クローンコマンドを `git clone リポジトリURL` を実行します。
 ```Git Bash
-$ git clone https://github.fork.co.jp/wi/front-end-textbook.git
+$ git clone https://github.xxx.co.jp/xxx.git
 ```
 
 5. ユーザー名、パスワードを聞かれた場合
@@ -362,7 +361,7 @@ $ git tag /* タグを一覧すると追加されていることが確認でき�
 v0.1
 $ git show v0.1 /* v0.1 に関連するコミットの情報を確認できます */
 commit 0482a7731464e222109b39db3d8964099f932bc1 (HEAD -> te, tag: v0.1, origin/test, test)
-Author: Ken Yoshihara <ken.yoshihara@fork.co.jp>
+Author: XXX <test@test.com>
 Date:   Tue Jan 29 18:51:19 2019 +0900
 ```
 - **注釈付き版（annotated）**<br>タグを作成者した人物の名前やメールアドレス、作成日時やタグに付与されたメッセージを含めることができます。
@@ -373,13 +372,13 @@ $ git tag
 v1.0
 $ git show v1.0 /* v1.0 のタグを作成した人の情報やタグのコメントなどが確認できます */
 tag v1.0
-Tagger: Ken Yoshihara <ken.yoshihara@fork.co.jp>
+Tagger: XXX <test@test.com>
 Date:   Tue Jan 29 19:57:11 2019 +0900
 
 release-v1.0
 
 commit 0482a7731464e222109b39db3d8964099f932bc1 (HEAD -> te, tag: v1.0, tag: v0.1, origin/test, test)
-Author: Ken Yoshihara <ken.yoshihara@fork.co.jp>
+Author: XXX <test@test.com>
 Date:   Tue Jan 29 18:51:19 2019 +0900
 
     empty commit
@@ -403,7 +402,7 @@ $ git push origin --tags /** ローカルにあるタグのうち、リモート
 ```Git Bash
 $ git reset コミットID
 ```
-
+f
 - 直前のコミットを取り消したい（無かったことにしたい）
 ```Git Bash
 $ git reset --hard HEAD^
@@ -604,7 +603,7 @@ $ git push origin top
 ### GHE からリポジトリを作成する
 
 ![](./img/create-repo_01.png)
-1. [GHE トップ](https://github.fork.co.jp/)から「New repository」をクリックする。
+1. GHE トップから「New repository」をクリックする。
 
 ![](./img/create-repo_02.png)
 2. 新規リポジトリ名や公開範囲などを選択する。
